@@ -1,36 +1,32 @@
 package estacionamento;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class GerenciarEstacionamento {
+	private List<Estacionamento> e;
 	
-	// Vou passar atributos dessa classe
+	static GerenciarAcessos[] ga = new GerenciarAcessos[0];
 	
-	String tipoDeEstacionamento,
-		   horaDeAbir,
-		   horaDeFechar;
-	int capacidade;
+	float totalContratante;
 	
-	public GerenciarEstacionamento(String tipoDeEstacionamento, String horaDeAbrir, String horaDeFechar, int capacidade) {
-		this.capacidade = capacidade;
-		this.horaDeAbir = horaDeAbrir;
-		this.horaDeFechar = horaDeFechar;
-		this.tipoDeEstacionamento = tipoDeEstacionamento;
-		
-	}
-	
-	public int getCapacidade() {
-		return capacidade;
+	public GerenciarEstacionamento (float totalContratante) {
+		this.totalContratante = totalContratante;
 	}
 
-	public String getHoraDeAbrir() {
-		return horaDeAbir;
+	public float getTotalContratante() {
+		return totalContratante;
 	}
-	
-	public String getHoraDeFechar() {
-		return horaDeFechar;
+
+	public void setTotalContratante(float totalContratante) {
+		this.totalContratante = totalContratante;
 	}
-	
-	public String getTipoDeEstacionamento() {
-		return tipoDeEstacionamento;
+
+	public String criarEstacionamento() {
+		return null;
 	}
-	
+	public String calcularTotalEstacionamento(float totalContratante) {
+		return null;
+	}
+
 }
