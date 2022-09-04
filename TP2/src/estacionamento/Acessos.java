@@ -2,6 +2,8 @@ package estacionamento;
 
 import java.util.Date;
 
+import exceptions.DescricaoEmBrancoException;
+
 public class Acessos {
 	
 	protected String placa, 
@@ -27,11 +29,9 @@ public class Acessos {
 	}
 	
 
-	public Acessos() {
-		// TODO Auto-generated constructor stub
-	}
-
-
+	//public Acessos() {
+	//}
+	
 	//getters and setters horaEntrada e horaSaida
 	public String getHoraEntrada() {
 		return horaEntrada;
@@ -90,5 +90,12 @@ public class Acessos {
 		this.mensalista = mensalista;
 	}
 	
-	
+	public static Acessos criarAcesso(String placa, String dataEntrada, String dataSaida, boolean evento, boolean mensalista, String horaEntrada, String horaSaida)
+		throws DescricaoEmBrancoException {
+		if (placa.equalsIgnoreCase("")|| dataEntrada.equalsIgnoreCase("")|| dataSaida.equalsIgnoreCase("")|| horaEntrada.equalsIgnoreCase("")|| horaSaida.equalsIgnoreCase(""))
+		{ throw new DescricaoEmBrancoException(); 
+		}
+		Acessos ac = new Acessos(placa,dataEntrada,dataSaida,evento,mensalista,horaEntrada,horaSaida);
+		return ac;
+	}
 }

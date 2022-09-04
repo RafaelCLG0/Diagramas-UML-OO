@@ -1,5 +1,5 @@
 package exceptions;
 
-public class ValorAcessoInvalidoException {
+public class ValorAcessoInvalidoException extends Exception{
 
 }

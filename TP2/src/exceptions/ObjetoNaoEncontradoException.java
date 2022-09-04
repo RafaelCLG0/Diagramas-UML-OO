@@ -1,5 +1,9 @@
 package exceptions;
 
-public class ObjetoNaoEncontradoException {
+import estacionamento.Estacionamento;
 
+public class ObjetoNaoEncontradoException  extends Exception{
+		public ObjetoNaoEncontradoException (Estacionamento estacio) {
+			
+		}
 }

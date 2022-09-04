@@ -1,22 +1,25 @@
 package estacionamento;
 
-import java.util.Calendar;
-/* import java.util.LinkedList;
-import java.util.List; */
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
 public class GerenciarAcessos {
 	
-	public static Estacionamento es;
-	
 	public static Acessos a;
 	
+	public static Estacionamento es;
+	
+	private List<Acessos> ac;
+	
 	public GerenciarAcessos() {
-		a = new Acessos();
+		
+		ac = new LinkedList<Acessos>();
+		
 		es = new Estacionamento();
 	}
-	private static void criarAcesso() {
+		private static void cadrastrarAcesso() {
 		String placa = JOptionPane.showInputDialog("Informe a Placa do veículo");		
 		String dataDeEntrada = JOptionPane.showInputDialog("Informe a Data de Entrada");
 		String dataDeSaida = JOptionPane.showInputDialog("Informe a Data de Saida");
@@ -30,7 +33,8 @@ public class GerenciarAcessos {
 				 Evento e = (Evento) b ;
 				 e.setInicioEvento(inicioDoEvento);
 				 e.setFimEvento(saidaDoEvento);
-				 e.setTaxaFixaEve(taxa); 
+				 e.setTaxaFixaEve(taxa);
+				 a.setEvento(true);
 				 }
 			
 			else if(opcao == JOptionPane.NO_OPTION) {
@@ -40,19 +44,17 @@ public class GerenciarAcessos {
 					String horaDeSaida = JOptionPane.showInputDialog("Informe a hora de Saida");
 					a.setHoraEntrada(horaDeEntrada);
 					a.setHoraSaida(horaDeSaida);
-					
-					
+					a.setMensalista(true);
 					}
 			}
 			else {
 				String horaDeEntrada = JOptionPane.showInputDialog("Informe a hora de Entrada");		
 				String horaDeSaida = JOptionPane.showInputDialog("Informe a hora de Saida");
-				
 			}
 	}
 	
 	/* public String addAcesso() {
-		return a.add(); 
+		return ac.add(); 
 	} */
 	
 	protected float calcularValor() {
