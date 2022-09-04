@@ -23,16 +23,16 @@ public class Acessos {
 		this.dataSaida = dataSaida;
 		this.evento = evento;
 		this.mensalista = mensalista;
-		//atributos horaEntrada e horaSaida
 		this.horaEntrada = horaEntrada;
 		this.horaSaida = horaSaida;
 	}
 	
 
-	//public Acessos() {
-	//}
-	
-	//getters and setters horaEntrada e horaSaida
+	/*
+	 * public Acessos() {
+	 */
+
+		
 	public String getHoraEntrada() {
 		return horaEntrada;
 	}
@@ -48,7 +48,6 @@ public class Acessos {
 	public void setHoraSaida(String horaSaida) {
 		this.horaSaida = horaSaida;
 	}
-	//---------
 	
 	public String getPlaca() {
 		return placa;

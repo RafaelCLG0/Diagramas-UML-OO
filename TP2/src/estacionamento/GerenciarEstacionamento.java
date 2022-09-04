@@ -51,6 +51,8 @@ public class GerenciarEstacionamento {
 		String not = JOptionPane.showInputDialog("Informe a Porcentagem da Diaria Noturna");
 		String txcontra = JOptionPane.showInputDialog("Informe a Taxa do Contratante");
 		String taxamensal = JOptionPane.showInputDialog("Informe a Taxa Fixa Mensal");
+		String hrabrir = JOptionPane.showInputDialog("Informe a Hora de Abrir");
+		String hrfechar = JOptionPane.showInputDialog("Informe a Hora de Fechar");
 		
 		int capacidade = Integer.parseInt(capa);
 		int valor = Integer.parseInt(valo);
@@ -60,15 +62,17 @@ public class GerenciarEstacionamento {
 		int mensal = Integer.parseInt(taxamensal);
 		float contra = Float.parseFloat(txcontra);
 		
-		int opcao3 = JOptionPane.showConfirmDialog(null, "É Aberto 24Horas");
-			if(opcao3 == JOptionPane.YES_OPTION) {
-				estacio.setAberto24h(true); 
+		estacio = Estacionamento.criarEstacionamento(tipo, hrabrir, hrfechar, capacidade, horacheia, contra, diaria, noturno, mensal, valor);
+		
+		}catch (DescricaoEmBrancoException e) {
+			
+		}catch (ValorAcessoInvalidoException e) {
+			
 		}
-		else if(opcao3 == JOptionPane.NO_OPTION){
-			String hrabrir = JOptionPane.showInputDialog("Informe a Hora de Abrir");
-			String hrfechar = JOptionPane.showInputDialog("Informe a Hora de Fechar"); 
-		}
-					return false;			
+		
+		boolean resposta = e.add(estacio); 
+		
+		return resposta;
 	} 
 
 	

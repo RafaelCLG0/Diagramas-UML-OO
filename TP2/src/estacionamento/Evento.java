@@ -42,7 +42,6 @@ public class Evento extends GerenciarAcessos {
 	}
 	
 	public float calcularContratante(){
-		
 		Evento e = new Evento(inicioEvento, fimEvento ,taxaFixaEve);
 		int valor = e.getTaxaFixaEve();
 		float total = (valor * es.contratante) / 100;
