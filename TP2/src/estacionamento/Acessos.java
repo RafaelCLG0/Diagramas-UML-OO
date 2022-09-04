@@ -8,13 +8,14 @@ public class Acessos {
 				     horaEntrada, 
 				     horaSaida;
 	
-	protected Date dataEntrada,
+	protected String dataEntrada,
 		 dataSaida;
 	
 	protected boolean evento, 
 			mensalista;
 	
-	public Acessos(String placa, Date dataEntrada, Date dataSaida, boolean evento, boolean mensalista, String horaEntrada, String horaSaida) {
+	
+	public Acessos(String placa, String dataEntrada, String dataSaida, boolean evento, boolean mensalista, String horaEntrada, String horaSaida) {
 		this.placa = placa;
 		this.dataEntrada = dataEntrada;
 		this.dataSaida = dataSaida;
@@ -25,6 +26,12 @@ public class Acessos {
 		this.horaSaida = horaSaida;
 	}
 	
+
+	public Acessos() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	//getters and setters horaEntrada e horaSaida
 	public String getHoraEntrada() {
 		return horaEntrada;
@@ -51,19 +58,19 @@ public class Acessos {
 		this.placa = placa;
 	}
 
-	public Date getDataEntrada() {
+	public String getDataEntrada() {
 		return dataEntrada;
 	}
 
-	public void setDataEntrada(Date dataEntrada) {
+	public void setDataEntrada(String dataEntrada) {
 		this.dataEntrada = dataEntrada;
 	}
 
-	public Date getDataSaida() {
+	public String getDataSaida() {
 		return dataSaida;
 	}
 
-	public void setDataSaida(Date dataSaida) {
+	public void setDataSaida(String dataSaida) {
 		this.dataSaida = dataSaida;
 	}
 

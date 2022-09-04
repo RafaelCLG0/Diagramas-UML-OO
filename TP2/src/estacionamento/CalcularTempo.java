@@ -1,34 +1,41 @@
 package estacionamento;
 
-public class CalcularFracao extends Padrao {
-	private float valorTotalFracao;
+public class CalcularTempo extends Padrao {
+	private float valorTotal;
 	
-	public CalcularFracao() {
+	public int CalcularTempo() {
+	String ent = a.getHoraEntrada();
+	int entra = Integer.parseInt(ent);
+	String sai = a.getHoraSaida();
+	int said = Integer.parseInt(sai);
+	int temp = entra - said;
+	return temp;
 	}
 	
-	public CalcularFracao(float valorTotalFracao) {
-		this.valorTotalFracao = valorTotalFracao;
+	public CalcularTempo(float valorTotal) {
+		
+		
+		this.valorTotal = valorTotal;
 	}
 	
 	
-	public float getValorTotalFracao() {
-		return valorTotalFracao;
+	public float getValorTotal() {
+		return valorTotal;
 	}
 
-	public void setValorTotalFracao(float valorTotalFracao) {
-		this.valorTotalFracao = valorTotalFracao;
+	public void setValorTotal(float valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 	
-	public float calcularValor(int valorFracao) {
+	public float calcularValor(int valor) {
 		return (Float) null;
 	}
 	
-	public float calcularContratante(int valorFracao, int contratante) {
+	public float calcularContratante(int valor, int contratante) {
 		return (Float) null;
 	}
-	
-	@Override
+
 	public String calcularTempo() {
 		return null;
 	}

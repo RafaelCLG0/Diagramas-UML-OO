@@ -1,5 +1,8 @@
 package estacionamento;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Evento extends GerenciarAcessos {
 	
 	private String inicioEvento, 
@@ -8,8 +11,8 @@ public class Evento extends GerenciarAcessos {
 	protected int taxaFixaEve;
 	
 	
-	
 	public Evento(String inicioEvento, String fimEvento, int taxaFixaEve) {
+
 		
 	}
 
@@ -38,13 +41,15 @@ public class Evento extends GerenciarAcessos {
 		this.taxaFixaEve = taxaFixaEve;
 	}
 	
-	
-	public float CalcularValor(int taxaFixaEve) {
-		return (Float) null;
-	}
-	
-	public float calcularContratante(int taxaFixaEve, int contratante) {
-		return (Float) null;
+	public float calcularContratante(){
+		
+		Evento e = new Evento(inicioEvento, fimEvento ,taxaFixaEve);
+		int valor = e.getTaxaFixaEve();
+		float total = (valor * es.contratante) / 100;
+		return total;
+		
+		
+		
 	}
 	
 }

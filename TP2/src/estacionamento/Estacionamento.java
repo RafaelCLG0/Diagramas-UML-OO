@@ -18,7 +18,8 @@ public class Estacionamento {
 		taxaNoturno,
 		taxaFixaMensal,
 		valorFracao;
-
+	
+	
 	public Estacionamento(String tipoDeEstacionamento, String horaDeAbrir, String horaDeFechar, int capacidade, boolean aberto24h, 
 						  float descontoHora, float contratante ,int taxaDiaria, int taxaNoturno, int taxaFixaMensal, int valorFracao) {
 		
@@ -35,6 +36,13 @@ public class Estacionamento {
 		this.valorFracao = valorFracao;
 		}
 	
+
+
+	public Estacionamento() {
+	}
+
+
+
 	public float getContratante() {
 		return contratante;
 	}

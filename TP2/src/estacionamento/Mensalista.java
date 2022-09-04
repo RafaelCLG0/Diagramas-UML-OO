@@ -1,11 +1,10 @@
 package estacionamento;
 
-public class Mensalista {
-	public float calcularValor(int taxaFixaMensal) {
-		return (Float) null;
-	}
+public class Mensalista extends GerenciarAcessos {
 
-	public float calcularContratante(int taxaFixaMensal, int contratante) {
-		return (Float) null;
+	public float calcularContratante() {
+		float total2 = (es.taxaFixaMensal * es.contratante) / 100;
+		return total2;
+
 	}
 }
