@@ -1,14 +1,11 @@
 package estacionamento;
 
+import exceptions.ValorAcessoInvalidoException;
+
 public class HorasFracao extends Padrao {
 	private float valorTotal;
 	
-	public String CalcularTempo() {
-		return null;
-	}
-	
 	public HorasFracao(float valorTotal) {
-		estacio.getValorFracao();
 		this.valorTotal = valorTotal;
 	}
 	
@@ -22,7 +19,14 @@ public class HorasFracao extends Padrao {
 	}
 
 	
-	public float calcularValor(int valor) {
+	public float calcularValor(int valor) throws ValorAcessoInvalidoException {
+		estacio.getValorFracao();
+		int	temp = calcularTempo();
+		if(temp < 60) {
+			if(45 < temp)
+			valor = estacio.getValorFracao() * 3;
+			
+		}
 		return (Float) null;
 	}
 	
@@ -30,10 +34,12 @@ public class HorasFracao extends Padrao {
 		return (Float) null;
 	}
 
-	public int calcularTempo() {
-		int entra = a.getHoraEntrada();
-		int saida = a.getHoraSaida();
-		int temp = entra - saida;
+	public int calcularTempo() throws ValorAcessoInvalidoException {
+		int	horaDeEntrada = converterHora(a.getHoraEntrada());
+		int horaDeSaida = converterHora(a.getHoraSaida());
+		int entra = horaDeEntrada;
+		int saida = horaDeSaida;
+		int temp = saida - entra;
 		return temp;
 	}
 

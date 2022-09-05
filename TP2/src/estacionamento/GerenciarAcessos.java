@@ -13,11 +13,15 @@ public class GerenciarAcessos {
 	
 	public static Acessos a;
 	
+	public static GerenciarAcessos g;
+	
 	public static Estacionamento estacio;
 	
 	public static Estacionamento es;
 	
 	private static List<Acessos> acs;
+	
+	public static Evento e;
 	
 	
 	public GerenciarAcessos() {
@@ -44,13 +48,12 @@ public class GerenciarAcessos {
 				String saidaDoEvento = JOptionPane.showInputDialog("Informe a saida do Evento:");
 				String taxaDoEvento = JOptionPane.showInputDialog("Informe a taxa do Evento:");
 				int taxa = Integer.parseInt(taxaDoEvento);
-				GerenciarAcessos b = new Evento(inicioDoEvento,saidaDoEvento,taxa);
-				Evento e = (Evento) b;
+
 				e.setInicioEvento(inicioDoEvento);
 				e.setFimEvento(saidaDoEvento);
 				e.setTaxaFixaEve(taxa);
 				try {
-				e.criarEvento(inicioDoEvento, saidaDoEvento, taxa);
+				Evento.criarEvento(inicioDoEvento, saidaDoEvento, taxa);
 				}catch(DescricaoEmBrancoException y) {	
 				}catch(ValorAcessoInvalidoException y) {
 				}
@@ -61,37 +64,50 @@ public class GerenciarAcessos {
 				
 				if(mensalista == JOptionPane.YES_OPTION) { //Mensalista
 					a.setMensalista(true);
-					String horaDeEnt = JOptionPane.showInputDialog("Informe a hora de Entrada:");	
-					String horaDeSai = JOptionPane.showInputDialog("Informe a hora de Saida:");
-					int horaDeEntrada = Integer.parseInt(horaDeEnt);
-					int horaDeSaida = Integer.parseInt(horaDeSai);
-					a.setHoraEntrada(horaDeEntrada);
-					a.setHoraSaida(horaDeSaida);
+					String horaDeEnt = JOptionPane.showInputDialog("Informe a hora de Entrada: (HH:mm)");	
+					String horaDeSai = JOptionPane.showInputDialog("Informe a hora de Saida: (HH:mm)");
+					
+					
+					a.setHoraEntrada(horaDeEnt);
+					a.setHoraSaida(horaDeSai);
+					
+					int	horaDeEntrada = converterHora(horaDeEnt);
+					int horaDeSaida = converterHora(horaDeSai);
 					
 					try {
-					a = Acessos.criarAcesso(placa, dataDeEntrada, dataDeSaida, false, true, horaDeEntrada, horaDeSaida);
-					}catch(DescricaoEmBrancoException b) {	
+					a = Acessos.criarAcesso(placa, dataDeEntrada, dataDeSaida, false, true, horaDeEnt, horaDeSai);
+					
+					converterHora(horaDeEnt);
+					converterHora(horaDeSai);
+					
+					}catch(DescricaoEmBrancoException b) {
+					}catch(ValorAcessoInvalidoException b) {	
 					}
 					}
 					
 				}
 			
 			else { //Padrão
-				String horaDeEnt = JOptionPane.showInputDialog("Informe a hora de Entrada:");		
-				String horaDeSai = JOptionPane.showInputDialog("Informe a hora de Saida:");
-				int horaDeEntrada = Integer.parseInt(horaDeEnt);
-				int horaDeSaida = Integer.parseInt(horaDeSai);
-				a.setHoraEntrada(horaDeEntrada);
-				a.setHoraSaida(horaDeSaida);
+				String horaDeEnt = JOptionPane.showInputDialog("Informe a hora de Entrada: (HH:mm)");		
+				String horaDeSai = JOptionPane.showInputDialog("Informe a hora de Saida: (HH:mm)");
+				int	horaDeEntrada = converterHora(horaDeEnt);
+				int horaDeSaida = converterHora(horaDeSai);
+				
+				int horaDeAbrir = converterHora(estacio.getHoraDeAbrir());
+				int horaDeFechar = converterHora(estacio.getHoraDeFechar());
+				
+				a.setHoraEntrada(horaDeEnt);
+				a.setHoraSaida(horaDeSai);
+				
 	
-				if(horaDeEntrada <= estacio.getHoraDeAbrir() || estacio.getHoraDeFechar() <= horaDeEntrada) {
+				if(horaDeEntrada <= horaDeAbrir || horaDeFechar <= horaDeSaida) {
 					String invalido = JOptionPane.showInputDialog("Horário Inválido");
 					atualizarAcesso();
 					roda = true;
 				}
 					
 				try {
-				a = Acessos.criarAcesso(placa, dataDeEntrada, dataDeSaida, false, false, horaDeEntrada, horaDeSaida);
+				a = Acessos.criarAcesso(placa, dataDeEntrada, dataDeSaida, false, false, horaDeEnt, horaDeSai);
 				}catch(DescricaoEmBrancoException b) {	
 				}
 			} 
@@ -129,13 +145,21 @@ public class GerenciarAcessos {
 		return roda;
 	}
 	
-	public boolean removerAcesso(Acessos a) throws DescricaoEmBrancoException{
+	public boolean removerAcesso(Acessos a) throws ObjetoNaoEncontradoException{
 		boolean resposta = false;
 		if(acs.contains(a)) {
 			resposta = acs.remove(a);
-		}else {throw new DescricaoEmBrancoException();
+		}else {throw new ObjetoNaoEncontradoException(null);
 			}
 		return resposta;
 	}
+	public static int converterHora(String hora)throws ValorAcessoInvalidoException {
+	String horari = hora.substring (0,2);
+	String minut = hora.substring(3,5);
+	int horario = Integer.parseInt(horari);
+	int minutos = Integer.parseInt(minut);
+	return (60 * horario) + minutos;
+	}
+	
 
 }

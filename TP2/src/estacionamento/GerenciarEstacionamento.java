@@ -51,8 +51,8 @@ public class GerenciarEstacionamento {
 		String not = JOptionPane.showInputDialog("Informe a Porcentagem da Diaria Noturna");
 		String txcontra = JOptionPane.showInputDialog("Informe a Taxa do Contratante");
 		String taxamensal = JOptionPane.showInputDialog("Informe a Taxa Fixa Mensal");
-		String hrabrir = JOptionPane.showInputDialog("Informe a Hora de Abrir");
-		String hrfechar = JOptionPane.showInputDialog("Informe a Hora de Fechar");
+		String hrabrir = JOptionPane.showInputDialog("Informe a Hora de Abrir : (HH:mm)");
+		String hrfechar = JOptionPane.showInputDialog("Informe a Hora de Fechar : (HH:mm)");
 		
 		int capacidade = Integer.parseInt(capa);
 		int valor = Integer.parseInt(valo);
@@ -61,21 +61,19 @@ public class GerenciarEstacionamento {
 		float noturno = Float.parseFloat(not);
 		int mensal = Integer.parseInt(taxamensal);
 		float contra = Float.parseFloat(txcontra);
-		int horabrir = Integer.parseInt(hrabrir);
-		int horafechar = Integer.parseInt(hrfechar);
 		
 		estacio.setValorFracao(valor);
 		estacio.setCapacidade(capacidade);
 		estacio.setTaxaDiaria(diaria);
 		estacio.setContratante(contra);
 		estacio.setTaxaFixaMensal(mensal);
-		estacio.setHoraDeAbrir(horabrir);
-		estacio.setHoraDeFechar(horafechar);
+		estacio.setHoraDeAbrir(hrabrir);
+		estacio.setHoraDeFechar(hrfechar);
 		estacio.setTaxaDiaria(diaria);
 		estacio.setTaxaNoturno(noturno);
 		estacio.setDescontoHora(horacheia);
 		
-		estacio = Estacionamento.criarEstacionamento(tipo, horabrir, horafechar, capacidade, horacheia, contra, diaria, noturno, mensal, valor);
+		estacio = Estacionamento.criarEstacionamento(tipo, hrabrir, hrfechar, capacidade, horacheia, contra, diaria, noturno, mensal, valor);
 		
 		}catch (DescricaoEmBrancoException e) {
 			
@@ -104,5 +102,13 @@ public class GerenciarEstacionamento {
 	public String calcularTotalEstacionamento(float totalContratante) {
 		return null;
 	}
+	public static int converterHora(String hora) {
+	String horari = hora.substring (0,2);
+	String minut = hora.substring(3,5);
+	int horario = Integer.parseInt(horari);
+	int minutos = Integer.parseInt(minut);
+	return (60 * horario) + minutos;
+	}
+
 
 }

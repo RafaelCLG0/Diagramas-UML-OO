@@ -5,17 +5,16 @@ import exceptions.ValorAcessoInvalidoException;
 
 public class Estacionamento {
 
-	private String tipoDeEstacionamento;
+	private String tipoDeEstacionamento,
+				horaDeAbrir, horaDeFechar;
 
 	private int capacidade;
-
-	protected int horaDeAbrir, horaDeFechar;
 
 	protected float descontoHora, contratante, taxaNoturno;
 
 	protected int taxaDiaria, taxaFixaMensal, valorFracao;
 
-	public Estacionamento(String tipoDeEstacionamento, int horaDeAbrir, int horaDeFechar, int capacidade, float descontoHora, float contratante, int taxaDiaria, float taxaNoturno,
+	public Estacionamento(String tipoDeEstacionamento, String horaDeAbrir, String horaDeFechar, int capacidade, float descontoHora, float contratante, int taxaDiaria, float taxaNoturno,
 			int taxaFixaMensal, int valorFracao) {
 
 		this.capacidade = capacidade;
@@ -41,11 +40,11 @@ public class Estacionamento {
 		this.contratante = contratante;
 	}
 
-	public int getHoraDeAbrir() {
+	public String getHoraDeAbrir() {
 		return horaDeAbrir;
 	}
 
-	public void setHoraDeAbrir(int horaDeAbrir) {
+	public void setHoraDeAbrir(String horaDeAbrir) {
 		this.horaDeAbrir = horaDeAbrir;
 	}
 
@@ -97,14 +96,14 @@ public class Estacionamento {
 		this.capacidade = capacidade;
 	}
 
-	public void setHoraDeFechar(int horaDeFechar) {
+	public void setHoraDeFechar(String horaDeFechar) {
 		this.horaDeFechar = horaDeFechar;
 	}
 
 	public int getCapacidade() {
 		return capacidade;
 	}
-	public int getHoraDeFechar() {
+	public String getHoraDeFechar() {
 		return horaDeFechar;
 	}
 
@@ -112,12 +111,12 @@ public class Estacionamento {
 		return tipoDeEstacionamento;
 	}
 
-	public static Estacionamento criarEstacionamento (String tipoDeEstacionamento, int horaDeAbrir, int horaDeFechar, int capacidade, float descontoHora, float contratante ,int taxaDiaria, float taxaNoturno, int taxaFixaMensal, int valorFracao)
+	public static Estacionamento criarEstacionamento (String tipoDeEstacionamento, String horaDeAbrir, String horaDeFechar, int capacidade, float descontoHora, float contratante ,int taxaDiaria, float taxaNoturno, int taxaFixaMensal, int valorFracao)
 			throws DescricaoEmBrancoException , ValorAcessoInvalidoException{
-		if(tipoDeEstacionamento.equalsIgnoreCase(""))
+		if(tipoDeEstacionamento.equalsIgnoreCase("")||horaDeAbrir.equalsIgnoreCase("")||horaDeFechar.equalsIgnoreCase(""))
 		{	throw new DescricaoEmBrancoException();
 		}
-		else if(horaDeAbrir <= 0 || horaDeFechar <= 0 ||capacidade <= 0 || descontoHora <= 0 || contratante <= 0 || taxaDiaria <= 0 || taxaNoturno <= 0 || taxaFixaMensal <= 0 || valorFracao <= 0) {	
+		else if(capacidade <= 0 || descontoHora <= 0 || contratante <= 0 || taxaDiaria <= 0 || taxaNoturno <= 0 || taxaFixaMensal <= 0 || valorFracao <= 0) {	
 		}
 
 		Estacionamento estacio = new Estacionamento(tipoDeEstacionamento,horaDeAbrir,horaDeFechar,capacidade,descontoHora,contratante ,taxaDiaria,taxaNoturno,taxaFixaMensal,valorFracao);
