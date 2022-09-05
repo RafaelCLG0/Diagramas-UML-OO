@@ -3,6 +3,9 @@ package estacionamento;
 import java.util.LinkedList;
 import java.util.List;
 
+import exceptions.DescricaoEmBrancoException;
+import exceptions.ValorAcessoInvalidoException;
+
 public class Evento extends GerenciarAcessos {
 	
 	private String inicioEvento, 
@@ -39,6 +42,14 @@ public class Evento extends GerenciarAcessos {
 
 	public void setTaxaFixaEve(int taxaFixaEve) {
 		this.taxaFixaEve = taxaFixaEve;
+	}
+	public static void criarEvento (String inicioEvento, String fimEvento, int taxaFixaEve)throws DescricaoEmBrancoException, ValorAcessoInvalidoException {
+		if(inicioEvento.equalsIgnoreCase("")||fimEvento.equalsIgnoreCase(""))
+		{	throw new DescricaoEmBrancoException();
+		}
+		else if(taxaFixaEve <= 0) {	
+			throw new ValorAcessoInvalidoException();
+		}
 	}
 	
 	public float calcularContratante(){

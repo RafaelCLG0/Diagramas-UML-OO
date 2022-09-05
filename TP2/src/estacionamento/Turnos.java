@@ -18,7 +18,6 @@ public class Turnos extends Padrao {
 		this.noturno = noturno;
 	}
 	
-	
 	public int calcularDiaria() {
 		return (Integer) null;
 	}
@@ -39,9 +38,8 @@ public class Turnos extends Padrao {
 		return (Float) null;
 	}
 	
-	@Override
-	public String calcularTempo() {
-		return null;
+	public int calcularTempo() {
+		return 0;
 	}
 
 }

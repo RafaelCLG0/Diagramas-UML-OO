@@ -1,20 +1,14 @@
 package estacionamento;
 
-public class CalcularTempo extends Padrao {
+public class HorasFracao extends Padrao {
 	private float valorTotal;
 	
-	public int CalcularTempo() {
-	String ent = a.getHoraEntrada();
-	int entra = Integer.parseInt(ent);
-	String sai = a.getHoraSaida();
-	int said = Integer.parseInt(sai);
-	int temp = entra - said;
-	return temp;
+	public String CalcularTempo() {
+		return null;
 	}
 	
-	public CalcularTempo(float valorTotal) {
-		
-		
+	public HorasFracao(float valorTotal) {
+		estacio.getValorFracao();
 		this.valorTotal = valorTotal;
 	}
 	
@@ -36,8 +30,11 @@ public class CalcularTempo extends Padrao {
 		return (Float) null;
 	}
 
-	public String calcularTempo() {
-		return null;
+	public int calcularTempo() {
+		int entra = a.getHoraEntrada();
+		int saida = a.getHoraSaida();
+		int temp = entra - saida;
+		return temp;
 	}
 
 }

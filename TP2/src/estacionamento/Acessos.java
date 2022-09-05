@@ -6,10 +6,11 @@ import exceptions.DescricaoEmBrancoException;
 
 public class Acessos {
 	
-	protected String placa, 
-				     horaEntrada, 
-				     horaSaida;
+	protected String placa;
 	
+		protected int horaEntrada,
+		horaSaida;
+		
 	protected String dataEntrada,
 		 dataSaida;
 	
@@ -17,7 +18,7 @@ public class Acessos {
 			mensalista;
 	
 	
-	public Acessos(String placa, String dataEntrada, String dataSaida, boolean evento, boolean mensalista, String horaEntrada, String horaSaida) {
+	public Acessos(String placa, String dataEntrada, String dataSaida, boolean evento, boolean mensalista, int horaEntrada, int horaSaida) {
 		this.placa = placa;
 		this.dataEntrada = dataEntrada;
 		this.dataSaida = dataSaida;
@@ -33,19 +34,19 @@ public class Acessos {
 	 */
 
 		
-	public String getHoraEntrada() {
+	public int getHoraEntrada() {
 		return horaEntrada;
 	}
 
-	public void setHoraEntrada(String horaEntrada) {
+	public void setHoraEntrada(int horaEntrada) {
 		this.horaEntrada = horaEntrada;
 	}
 
-	public String getHoraSaida() {
+	public int getHoraSaida() {
 		return horaSaida;
 	}
 
-	public void setHoraSaida(String horaSaida) {
+	public void setHoraSaida(int horaSaida) {
 		this.horaSaida = horaSaida;
 	}
 	
@@ -89,12 +90,14 @@ public class Acessos {
 		this.mensalista = mensalista;
 	}
 	
-	public static Acessos criarAcesso(String placa, String dataEntrada, String dataSaida, boolean evento, boolean mensalista, String horaEntrada, String horaSaida)
+	public static Acessos criarAcesso(String placa, String dataEntrada, String dataSaida, boolean evento, boolean mensalista, int horaEntrada, int horaSaida)
 		throws DescricaoEmBrancoException {
-		if (placa.equalsIgnoreCase("")|| dataEntrada.equalsIgnoreCase("")|| dataSaida.equalsIgnoreCase("")|| horaEntrada.equalsIgnoreCase("")|| horaSaida.equalsIgnoreCase(""))
+		if (placa.equalsIgnoreCase("")|| dataEntrada.equalsIgnoreCase("")|| dataSaida.equalsIgnoreCase(""))
 		{ throw new DescricaoEmBrancoException(); 
 		}
-		Acessos ac = new Acessos(placa,dataEntrada,dataSaida,evento,mensalista,horaEntrada,horaSaida);
-		return ac;
+		else if(horaEntrada <= 0 || horaSaida <= 0);{
+		}
+		Acessos a = new Acessos(placa,dataEntrada,dataSaida,evento,mensalista,horaEntrada,horaSaida);
+		return a;
 	}
 }

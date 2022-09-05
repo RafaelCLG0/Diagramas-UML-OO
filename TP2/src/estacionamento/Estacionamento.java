@@ -9,13 +9,13 @@ public class Estacionamento {
 
 	private int capacidade;
 
-	protected String horaDeAbrir, horaDeFechar;
+	protected int horaDeAbrir, horaDeFechar;
 
 	protected float descontoHora, contratante, taxaNoturno;
 
 	protected int taxaDiaria, taxaFixaMensal, valorFracao;
 
-	public Estacionamento(String tipoDeEstacionamento, String horaDeAbrir, String horaDeFechar, int capacidade, float descontoHora, float contratante, int taxaDiaria, float taxaNoturno,
+	public Estacionamento(String tipoDeEstacionamento, int horaDeAbrir, int horaDeFechar, int capacidade, float descontoHora, float contratante, int taxaDiaria, float taxaNoturno,
 			int taxaFixaMensal, int valorFracao) {
 
 		this.capacidade = capacidade;
@@ -41,11 +41,11 @@ public class Estacionamento {
 		this.contratante = contratante;
 	}
 
-	public String getHoraDeAbrir() {
+	public int getHoraDeAbrir() {
 		return horaDeAbrir;
 	}
 
-	public void setHoraDeAbrir(String horaDeAbrir) {
+	public void setHoraDeAbrir(int horaDeAbrir) {
 		this.horaDeAbrir = horaDeAbrir;
 	}
 
@@ -69,7 +69,7 @@ public class Estacionamento {
 		return taxaNoturno;
 	}
 
-	public void setTaxaNoturno(int taxaNoturno) {
+	public void setTaxaNoturno(float taxaNoturno) {
 		this.taxaNoturno = taxaNoturno;
 	}
 
@@ -97,14 +97,14 @@ public class Estacionamento {
 		this.capacidade = capacidade;
 	}
 
-	public void setHoraDeFechar(String horaDeFechar) {
+	public void setHoraDeFechar(int horaDeFechar) {
 		this.horaDeFechar = horaDeFechar;
 	}
 
 	public int getCapacidade() {
 		return capacidade;
 	}
-	public String getHoraDeFechar() {
+	public int getHoraDeFechar() {
 		return horaDeFechar;
 	}
 
@@ -112,12 +112,12 @@ public class Estacionamento {
 		return tipoDeEstacionamento;
 	}
 
-	public static Estacionamento criarEstacionamento (String tipoDeEstacionamento, String horaDeAbrir, String horaDeFechar, int capacidade, float descontoHora, float contratante ,int taxaDiaria, float taxaNoturno, int taxaFixaMensal, int valorFracao)
+	public static Estacionamento criarEstacionamento (String tipoDeEstacionamento, int horaDeAbrir, int horaDeFechar, int capacidade, float descontoHora, float contratante ,int taxaDiaria, float taxaNoturno, int taxaFixaMensal, int valorFracao)
 			throws DescricaoEmBrancoException , ValorAcessoInvalidoException{
-		if(tipoDeEstacionamento.equalsIgnoreCase("")||horaDeAbrir.equalsIgnoreCase("")||horaDeFechar.equalsIgnoreCase(""))
+		if(tipoDeEstacionamento.equalsIgnoreCase(""))
 		{	throw new DescricaoEmBrancoException();
 		}
-		else if(capacidade <= 0 || descontoHora <= 0 || contratante <= 0 || taxaDiaria <= 0 || taxaNoturno <= 0 || taxaFixaMensal <= 0 || valorFracao <= 0) {	
+		else if(horaDeAbrir <= 0 || horaDeFechar <= 0 ||capacidade <= 0 || descontoHora <= 0 || contratante <= 0 || taxaDiaria <= 0 || taxaNoturno <= 0 || taxaFixaMensal <= 0 || valorFracao <= 0) {	
 		}
 
 		Estacionamento estacio = new Estacionamento(tipoDeEstacionamento,horaDeAbrir,horaDeFechar,capacidade,descontoHora,contratante ,taxaDiaria,taxaNoturno,taxaFixaMensal,valorFracao);

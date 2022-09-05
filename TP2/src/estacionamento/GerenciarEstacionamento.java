@@ -38,7 +38,7 @@ public class GerenciarEstacionamento {
 
 	public boolean addEstacionamento() throws DescricaoEmBrancoException, ValorAcessoInvalidoException, ObjetoNaoEncontradoException {
 		String tipo = JOptionPane.showInputDialog("Informe o tipo do Estacionamento");
-		
+		estacio.setTipoDeEstacionamento(tipo);
 		Estacionamento estacio = findEstacionamento(tipo);
 		if(estacio == null) {
 			throw new ObjetoNaoEncontradoException(estacio);
@@ -61,8 +61,21 @@ public class GerenciarEstacionamento {
 		float noturno = Float.parseFloat(not);
 		int mensal = Integer.parseInt(taxamensal);
 		float contra = Float.parseFloat(txcontra);
+		int horabrir = Integer.parseInt(hrabrir);
+		int horafechar = Integer.parseInt(hrfechar);
 		
-		estacio = Estacionamento.criarEstacionamento(tipo, hrabrir, hrfechar, capacidade, horacheia, contra, diaria, noturno, mensal, valor);
+		estacio.setValorFracao(valor);
+		estacio.setCapacidade(capacidade);
+		estacio.setTaxaDiaria(diaria);
+		estacio.setContratante(contra);
+		estacio.setTaxaFixaMensal(mensal);
+		estacio.setHoraDeAbrir(horabrir);
+		estacio.setHoraDeFechar(horafechar);
+		estacio.setTaxaDiaria(diaria);
+		estacio.setTaxaNoturno(noturno);
+		estacio.setDescontoHora(horacheia);
+		
+		estacio = Estacionamento.criarEstacionamento(tipo, horabrir, horafechar, capacidade, horacheia, contra, diaria, noturno, mensal, valor);
 		
 		}catch (DescricaoEmBrancoException e) {
 			
