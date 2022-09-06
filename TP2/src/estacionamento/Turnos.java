@@ -13,12 +13,14 @@ public class Turnos extends Padrao {
 	
 		
 	public boolean isNoturno() throws ValorAcessoInvalidoException {
+		String dataDeEntrada = a.getDataEntrada();
+		String dataDeSaida = a.getDataSaida();
 		int confirma = calcularTempo();
 		
 		if (dataDeEntrada != dataDeSaida && (confirma < 540 || confirma > 180) {  /*Defini que para ser um acesso noturno tem que ser maior que 3h 
 											  e menor que 9h e mudar de dia */
 			noturno = true;
-		}else if (dataDeEntrada != dataDeSaida && confirma >= 540) {  // Enquanto que um acesso de uma diária é maior que 9h pelo que o prof disse no tp1
+		}else if (confirma >= 540) {  // Enquanto que um acesso de uma diária é maior que 9h (pode mudar de dia ou não) pelo que o prof disse no tp1
 			noturno = false;
 		}
 		return noturno;
