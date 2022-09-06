@@ -16,7 +16,7 @@ public class Turnos extends Padrao {
 		String dataDeEntrada = a.getDataEntrada();
 		String dataDeSaida = a.getDataSaida();
 
-		if (dataDeEntrada != dataDeSaida && (confirma < 540 || confirma > 180) { //Eu define que entre 3 e 9 h mudando de dia é acesso noturno
+		if (dataDeEntrada != dataDeSaida && (confirma < 540 || confirma > 180)) { //Eu define que entre 3 e 9 h mudando de dia é acesso noturno
 			noturno = true;
 		} else if (confirma >= 540) { //Para uma acesso diario o avesso deve ser maior que 9 h e pode, ou não, mudar de dia
 			noturno = false;
