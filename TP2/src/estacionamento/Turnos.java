@@ -37,12 +37,9 @@ public class Turnos extends Padrao {
 		return resultado;
 	}
 	
-	public float calcularContratante_D(int taxaDiaria, int contratante) {
-		return (Float) null;
-	}
-	
-	public float calcularContratante_N(int taxaNoturna, int contratante) {
-		return (Float) null;
+	public float calcularContratante_Turnos(int taxaDiaria, int taxaNoturno, int contratante) {
+		float contratante = calcularValor(taxaDiaria, taxaNoturno) * estacio.contratante;
+		return contratante;
 	}
 	
 	public int calcularTempo() throws ValorAcessoInvalidoException {
