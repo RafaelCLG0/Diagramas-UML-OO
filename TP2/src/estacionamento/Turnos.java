@@ -15,9 +15,10 @@ public class Turnos extends Padrao {
 	public boolean isNoturno() throws ValorAcessoInvalidoException {
 		int confirma = calcularTempo();
 		
-		if (dataDeEntrada != dataDeSaida && confirma < 540) {
+		if (dataDeEntrada != dataDeSaida && (confirma < 540 || confirma > 180) {  /*Defini que para ser um acesso noturno tem que ser maior que 3h 
+											  e menor que 9h e mudar de dia */
 			noturno = true;
-		}else if (dataDeEntrada != dataDeSaida && confirma >= 540) {
+		}else if (dataDeEntrada != dataDeSaida && confirma >= 540) {  // Enquanto que um acesso de uma diária é maior que 9h pelo que o prof disse no tp1
 			noturno = false;
 		}
 		return noturno;
@@ -29,7 +30,7 @@ public class Turnos extends Padrao {
 	
 	public float calcularValor(int taxaDiaria, int taxaNoturno) throws ValorAcessoInvalidoException {
 		boolean turn = isNoturno();
-		if (turn == false) {                     //Maior que 9h de estadia
+		if (turn == false) {                     
 			float resultado = (float)taxaDiaria;
 		}else {
 			float resultado = (taxaDiaria/100)*taxaNoturno
