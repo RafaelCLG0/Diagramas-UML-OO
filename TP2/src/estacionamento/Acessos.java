@@ -5,18 +5,15 @@ import java.util.Date;
 import exceptions.DescricaoEmBrancoException;
 
 public class Acessos {
-	
+
 	protected String placa;
-		
-	protected String dataEntrada,
-		 dataSaida,horaEntrada,
-			horaSaida;
-	
-	protected boolean evento, 
-			mensalista;
-	
-	
-	public Acessos(String placa, String dataEntrada, String dataSaida, boolean evento, boolean mensalista, String horaEntrada, String horaSaida) {
+
+	protected String dataEntrada, dataSaida, horaEntrada, horaSaida;
+
+	protected boolean evento, mensalista;
+
+	public Acessos(String placa, String dataEntrada, String dataSaida, boolean evento, boolean mensalista,
+			String horaEntrada, String horaSaida) {
 		this.placa = placa;
 		this.dataEntrada = dataEntrada;
 		this.dataSaida = dataSaida;
@@ -25,13 +22,11 @@ public class Acessos {
 		this.horaEntrada = horaEntrada;
 		this.horaSaida = horaSaida;
 	}
-	
 
 	/*
 	 * public Acessos() {
 	 */
 
-		
 	public String getHoraEntrada() {
 		return horaEntrada;
 	}
@@ -47,7 +42,7 @@ public class Acessos {
 	public void setHoraSaida(String horaSaida) {
 		this.horaSaida = horaSaida;
 	}
-	
+
 	public String getPlaca() {
 		return placa;
 	}
@@ -87,13 +82,14 @@ public class Acessos {
 	public void setMensalista(boolean mensalista) {
 		this.mensalista = mensalista;
 	}
-	
-	public static Acessos criarAcesso(String placa, String dataEntrada, String dataSaida, boolean evento, boolean mensalista, String horaEntrada, String horaSaida)
-		throws DescricaoEmBrancoException {
-		if (placa.equalsIgnoreCase("")|| dataEntrada.equalsIgnoreCase("")|| dataSaida.equalsIgnoreCase("")|| horaEntrada.equalsIgnoreCase("")|| horaSaida.equalsIgnoreCase(""))
-		{ throw new DescricaoEmBrancoException(); 
+
+	public static Acessos criarAcesso(String placa, String dataEntrada, String dataSaida, boolean evento,
+			boolean mensalista, String horaEntrada, String horaSaida) throws DescricaoEmBrancoException {
+		if (placa.equalsIgnoreCase("") || dataEntrada.equalsIgnoreCase("") || dataSaida.equalsIgnoreCase("")
+				|| horaEntrada.equalsIgnoreCase("") || horaSaida.equalsIgnoreCase("")) {
+			throw new DescricaoEmBrancoException();
 		}
-		Acessos a = new Acessos(placa,dataEntrada,dataSaida,evento,mensalista,horaEntrada,horaSaida);
+		Acessos a = new Acessos(placa, dataEntrada, dataSaida, evento, mensalista, horaEntrada, horaSaida);
 		return a;
 	}
 }
